@@ -2,6 +2,8 @@
 require_once("../model/model.php");
 $conn = new Model();
 $show = $conn -> showProducts();
+$showInsert = $conn -> showInsert();
+
 
 $i = $_REQUEST["accion"];
 
@@ -15,6 +17,11 @@ switch ($i) {
         $insert = new Controller();
         $insert -> insert();
     break;
+
+    case 'delete':
+        $delete = new Controller();
+        $delete -> delete();
+
 }
 
 class Controller{
@@ -29,6 +36,11 @@ class Controller{
     function insert(){
         $model = new Model();
         $model -> insert();
+    }
+
+    function delete(){
+        $model = new Model();
+        $model -> delete();
     }
 }
 ?>
