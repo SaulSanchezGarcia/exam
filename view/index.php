@@ -50,7 +50,7 @@
                     "<td>".$index['brand']."</td>".
                     "<td>".$index['model']."</td>".
                     "<td>"."$".$index['price'].".00"."</td>".
-                    "<td><button class='btn btn-success' style='width=80px'>Buy</button></td></td></tr>";
+                    "<td><button class='btn btn-success' style='width=80px'>Add to Cart</button></td></td></tr>";
                   }
                 ?>
             </tbody>

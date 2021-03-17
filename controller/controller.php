@@ -10,6 +10,11 @@ switch ($i) {
         $login = new Controller();
         $login -> login();
     break;
+
+    case 'insert':
+        $insert = new Controller();
+        $insert -> insert();
+    break;
 }
 
 class Controller{
@@ -19,6 +24,11 @@ class Controller{
     function login(){
         $model = new Model();
         $model -> login();
+    }
+
+    function insert(){
+        $model = new Model();
+        $model -> insert();
     }
 }
 ?>
