@@ -87,32 +87,58 @@ function insert(){
     if(name == "" || last_name == "" || email == "" || zip == "" || phone == ""){
         alert("Please fill all fields");
     }else{
-        $.ajax({
-            url: "../controller/controller.php?accion=insert",
-            type: "post",
-            data: {name:name, last_name:last_name, email:email, zip:zip, phone:phone},
-            dataType: "JSON",
-            success: function(res){
-                if(res.good){
-                    alert(res.mensaje);
-                    $("#name").val("");
-                    $("#last_name").val("");
-                    $("#email").val("");
-                    $("#zip").val("");
-                    $("#phone").val("");
-                    
-                    $("#tbody").load(" #tbody");
+        if(expresion.test(name) && expresion.test(last_name)){
+            if(validacionEmail.test(email)){
+                if(validacionZip.test(zip)){
+                    if(validacionPhone.test(phone)){
+                        $.ajax({
+                            url: "../controller/controller.php?accion=insert",
+                            type: "post",
+                            data: {name:name, last_name:last_name, email:email, zip:zip, phone:phone},
+                            dataType: "JSON",
+                            success: function(res){
+                                if(res.good){
+                                    alert(res.mensaje);
+                                    $("#name").val("");
+                                    $("#last_name").val("");
+                                    $("#email").val("");
+                                    $("#zip").val("");
+                                    $("#phone").val("");
+                                    
+                                    $("#tbody").load(" #tbody");
+                                }else{
+                                    alert(res.mensaje);
+                                }
+                                // alert("Successful registration");
+                               
+                            },
+                            error: function(jqXHR, textStatus, errorThrown){
+                                console.log(textStatus, errorThrown);
+                            }
+                        });
+                    }else{
+                        alert("El telefono esta mal");
+                    }
+                 
                 }else{
-                    alert(res.mensaje);
+                    alert("El zip no esta correcto");
                 }
-                // alert("Successful registration");
-               
-            },
-            error: function(jqXHR, textStatus, errorThrown){
-                console.log(textStatus, errorThrown);
+             
+            }else{
+                alert("El email no esta bien");
             }
-        });
-    }  
+          
+        }else{
+            alert("El nombre o apellido no esta bien");
+        }
+    }
+    // if(name == "" || last_name == "" || email == "" || zip == "" || phone == ""){
+    //     alert("Please fill all fields");
+    // }else{
+      
+    // }  
+ 
+ 
 }
 
 function del(idC){
@@ -136,6 +162,9 @@ function del(idC){
     });
 }
 
+function update(){
+   
+}
 // function buscar(){
 
 //     let search = $("#search").val();

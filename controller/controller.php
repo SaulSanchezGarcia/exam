@@ -3,7 +3,7 @@ require_once("../model/model.php");
 $conn = new Model();
 $show = $conn -> showProducts();
 $showInsert = $conn -> showInsert();
-
+$showUpdate = $conn -> showUpdate();
 
 $i = $_REQUEST["accion"];
 

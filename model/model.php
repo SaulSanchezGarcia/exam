@@ -105,6 +105,23 @@ class Model{
     function update(){
         $conn = new ConectarDB();
         $connection = $conn->conectar();
+
+        $id = $_REQUEST['id'];
+        $name = $_REQUEST['name'];
+        $last_name = $_REQUEST['last_name'];
+        $email = $_REQUEST['email'];
+        $zip = $_REQUEST['zip'];
+        $phone = $_REQUEST['phone'];
+
+        $query = "UPDATE customers 
+        SET name = '$name', last_name = '$last_name', email = '$email', zip = '$zip', phone = '$phone' WHERE id = '$id'";
+
+        if($result){
+            
+        }else{
+            echo "ERROR".$query."<br>".mysqli_error($connection);
+        }
+        mysqli_close($connection);
     }
 
     function showInsert(){
@@ -120,9 +137,27 @@ class Model{
             }
             return $arr;
         }else{
-            echo "ERROR".$sql."<br>".mysqli_error($conection);
+            echo "ERROR".$query."<br>".mysqli_error($connection);
         }
-        mysqli_close($conection);
+        mysqli_close($connection);
+    }
+
+    function showUpdate(){
+        $conn = new ConectarDB();
+        $connection = $conn->conectar();
+
+        $query = "SELECT * FROM customers"; 
+        $result = mysqli_query($connection, $query);
+
+        if($result){
+            while($row = mysqli_fetch_assoc($result)){
+                $arr[] = $row;
+            }
+            return $arr;
+        }else{
+            echo "ERROR".$query."<br>".mysqli_error($connection);
+        }
+        mysqli_close($connection);
     }
 
     function showProducts(){
@@ -138,9 +173,9 @@ class Model{
             }
             return $arr;
         }else{
-            echo "ERROR".$sql."<br>".mysqli_error($conection);
+            echo "ERROR".$query."<br>".mysqli_error($connection);
         }
-        mysqli_close($conection);
+        mysqli_close($connection);
 
     }
 }
