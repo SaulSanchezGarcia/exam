@@ -39,6 +39,7 @@
                 <th scope="col">Brand</th>
                 <th scope="col">Model</th>
                 <th scope="col">Price</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody >
@@ -50,7 +51,7 @@
                     "<td>".$index['brand']."</td>".
                     "<td>".$index['model']."</td>".
                     "<td>"."$".$index['price'].".00"."</td>".
-                    "<td><button class='btn btn-success' style='width=80px'>Add to Cart</button></td></td></tr>";
+                    "<td><button class='btn btn-success' style='width=80px' onclick='compra($index[price]);'>Add to Cart</button></td></td></tr>";
                   }
                 ?>
             </tbody>

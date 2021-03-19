@@ -4,6 +4,7 @@ $conn = new Model();
 $show = $conn -> showProducts();
 $showInsert = $conn -> showInsert();
 $showUpdate = $conn -> showUpdate();
+$showOrder = $conn -> showOrder();
 $showInsertProduct = $conn -> showInsertProduct();
 
 
@@ -49,6 +50,16 @@ switch ($i) {
         $updateProduct = new Controller();
         $updateProduct -> updateProduct();
     break;
+
+    case 'insertOrder':
+        $insertOrder = new Controller();
+        $insertOrder -> insertOrder();
+    break;
+
+    case 'delPO':
+        $delPO = new Controller();
+        $delPO -> delPO();
+    break;
 }
 
 class Controller{
@@ -93,6 +104,16 @@ class Controller{
     function updateProduct(){
         $model = new Model();
         $model -> updateProduct();
+    }
+
+    function insertOrder(){
+        $model = new Model();
+        $model -> insertOrder();
+    }
+
+    function delPO(){
+        $model = new Model();
+        $model -> delPO();
     }
 }
 ?>

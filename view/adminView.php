@@ -31,6 +31,15 @@
       <li class="nav-item">
         <a class="nav-link" href="../view/adminUpdateProduct.php">Update Product</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalLongPO">Create a New PO</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalLongPODA">Delete PO</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" >Update PO</a>
+      </li>
     </ul>
   </div>
   </div>
@@ -86,7 +95,8 @@
                 <?php
                   require_once("../controller/controller.php");
                   foreach($showInsert as $in){
-                    echo "<tr><td>".$in[1].
+                    echo "<tr><td>".$in[0].
+                    "<td>".$in[1]."</td>".
                     "<td>".$in[2]."</td>".
                     "<td>".$in[3]."</td>".
                     "<td>".$in[4]."</td>".
@@ -137,7 +147,8 @@
             <?php
                   require_once("../controller/controller.php");
                   foreach($showInsert as $in){
-                    echo "<tr><td>".$in[1].
+                    echo "<tr><td>".$in[0].
+                    "<td>".$in[1]."</td>".
                     "<td>".$in[2]."</td>".
                     "<td>".$in[3]."</td>".
                     "<td>".$in[4]."</td>".
@@ -198,6 +209,7 @@
           <table class="table" id ="tbodyP">
           <thead>
               <tr>
+                <th scope="col">ID</th>
                 <th scope="col">Img</th>
                 <th scope="col">Name</th>
                 <th scope="col">Brand</th>
@@ -210,7 +222,8 @@
             <?php
                   require_once("../controller/controller.php");
                   foreach($showInsertProduct as $inP){
-                    echo "<tr><td>".$inP[1].
+                    echo "<tr><td>".$inP[0].
+                    "<td>".$inP[1]."</td>".
                     "<td>".$inP[2]."</td>".
                     "<td>".$inP[3]."</td>".
                     "<td>".$inP[4]."</td>".
@@ -248,6 +261,7 @@
           <table class="table" id ="tbodyDelP">
           <thead>
               <tr>
+                <th scope="col">ID</th>
                 <th scope="col">Img</th>
                 <th scope="col">Name</th>
                 <th scope="col">Brand</th>
@@ -261,13 +275,133 @@
             <?php
                   require_once("../controller/controller.php");
                   foreach($showInsertProduct as $showIP){
-                    echo "<tr><td>".$showIP[1].
+                    echo "<tr><td>".$showIP[0].
+                    "<td>".$showIP[1]."</td>".
                     "<td>".$showIP[2]."</td>".
                     "<td>".$showIP[3]."</td>".
                     "<td>".$showIP[4]."</td>".
                     "<td>".$showIP[5]."</td>".
                     "<td>"."$".$showIP[6]."</td>".
                     "<td><button type='button' class='btn btn-danger' onclick='delProd($showIP[0])'>Delete</button></td></td></tr>";
+                  }
+                ?>
+            </tbody>
+            </table>
+      </form>
+        
+      </div>
+      
+    </div>
+  </div>
+</div> 
+
+<!-- Modal ADM PO-->
+<div class="modal fade" id="exampleModalLongPO" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Create a New PO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form>
+      <div class="form-group">
+            <label for="exampleInputEmail1">Date</label>
+            <input type="text" id="date" name="" class="form-control" aria-describedby="emailHelp"  placeholder="YYY/MM/DD">    
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">#Customer</label>
+            <input type="text" class="form-control" id="idC" name="" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">#Employee</label>
+            <input type="text" class="form-control" id="idE" name="" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">#Product</label>
+            <input type="email" class="form-control" id="idP" name="" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">#Outlet</label>
+            <input type="email" class="form-control" id="idO" name="" placeholder="">
+          </div>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary"  onclick="insertOrder();">Insert</button>
+      </div>
+
+      <table class="table" id ="tablePO">
+          <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">CUST ID</th>
+                <th scope="col">EMP ID</th>
+                <th scope="col">PROD ID</th>
+                <th scope="col">OUT ID</th>
+              </tr>
+            </thead>
+            <tbody >
+                  <?php
+                  require_once("../controller/controller.php");
+                    foreach($showOrder as $sO){
+                      echo "<tr><td>".$sO[0].
+                      "<td>".$sO[1]."</td>".
+                      "<td>".$sO[2]."</td>".
+                      "<td>".$sO[3]."</td>".
+                      "<td>".$sO[4]."</td>".
+                      "<td>".$sO[5]."</td></td></tr>";
+                    }
+                  ?>
+            </tbody>
+            </table>
+            </form>
+    </div>
+  </div>
+</div>
+
+<!--Modal ADM Delete PO -->
+<div class="modal fade" id="exampleModalLongPODA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Delete a Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form>
+          
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <!-- <button type="button" class="btn btn-primary"  onclick="insert();">Insert</button> -->
+          </div>
+          <table class="table" id ="tbodyDelPO">
+          <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">CUST ID</th>
+                <th scope="col">EMP ID</th>
+                <th scope="col">PROD ID</th>
+                <th scope="col">OUT ID</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody >
+            <?php
+                  require_once("../controller/controller.php");
+                  foreach($showOrder as $sO){
+                    echo "<tr><td>".$sO[0].
+                    "<td>".$sO[1]."</td>".
+                    "<td>".$sO[2]."</td>".
+                    "<td>".$sO[3]."</td>".
+                    "<td>".$sO[4]."</td>".
+                    "<td>".$sO[5]."</td>".
+                    "<td><button type='button' class='btn btn-danger' onclick='delPO($sO[0])'>Delete</button></td></td></tr>";
                   }
                 ?>
             </tbody>

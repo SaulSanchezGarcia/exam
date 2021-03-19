@@ -91,6 +91,32 @@ class Model{
         mysqli_close($connection);
     }
 
+    function insertOrder(){
+        $conn = new ConectarDB();
+        $connection = $conn->conectar();
+        
+        $date = $_REQUEST['date'];
+        $idC = $_REQUEST['idC'];
+        $idE = $_REQUEST['idE'];
+        $idP = $_REQUEST['idP'];
+        $idO = $_REQUEST['idO'];
+        $variable = array("insert" => false,"mensaje" => "");
+        
+        $query = "INSERT INTO sales(date, CUSTOMERS_idC, EMPLOYEES_idE, PRODUCTS_idP, OUTLETS_idO) VALUES ('$date','$idC','$idE','$idP','$idO')";
+        $result = mysqli_query($connection, $query);
+
+        if($result){
+            $variable["insert"] = true;
+            $variable["mensaje"] = "Successfull Registration";
+        }else{
+            $variable["insert"] = false;
+            $variable["mensaje"] = "Something went wrong";
+            echo "ERROR".$query."<br>".mysqli_error($connection);
+        }
+        echo json_encode($variable);
+        mysqli_close($connection);
+    }
+
     function delete(){
         $conn = new ConectarDB();
         $connection = $conn->conectar();
@@ -118,6 +144,27 @@ class Model{
 
         $idP = $_REQUEST["idP"];
         $query = "DELETE FROM products WHERE idP = '$idP'";
+        $result = mysqli_query($connection, $query);
+        $variable = array("eliminado" => false, "mensaje" => "");
+
+        if($result){
+            $variable["eliminado"] = true;
+            $variable["mensaje"] = "SUCCESSFULL DELETE";
+        }else{
+            $variable["eliminado"] = false;
+            $variable["mensaje"] = "SOMETHING WENT WRONG";
+            echo "ERROR".$query."<br>".mysqli_error($connection);
+        }
+        echo json_encode($variable);
+        mysqli_close($connection);
+    }
+
+    function delPO(){
+        $conn = new ConectarDB();
+        $connection = $conn->conectar();
+
+        $idS = $_REQUEST["idS"];
+        $query = "DELETE FROM sales WHERE idS = '$idS'";
         $result = mysqli_query($connection, $query);
         $variable = array("eliminado" => false, "mensaje" => "");
 
@@ -204,6 +251,24 @@ class Model{
             }
             //  print_r($arr);
              echo json_encode($arr);
+        }else{
+            echo "ERROR".$query."<br>".mysqli_error($connection);
+        }
+        mysqli_close($connection);
+    }
+
+    function showOrder(){
+        $conn = new ConectarDB();
+        $connection = $conn->conectar();
+
+        $query = "SELECT * FROM sales"; 
+        $result = mysqli_query($connection, $query);
+
+        if($result){
+            while($row = mysqli_fetch_array($result)){
+                $arr[] = $row;
+            }
+            return $arr;
         }else{
             echo "ERROR".$query."<br>".mysqli_error($connection);
         }

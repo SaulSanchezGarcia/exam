@@ -265,3 +265,59 @@ function insertProduct(){
     });
 }
 
+function insertOrder(){
+    let date = $("#date").val();
+    let idC = $("#idC").val();
+    let idE = $("#idE").val();
+    let idP = $("#idP").val();
+    let idO = $("#idO").val();
+
+    $.ajax({
+        url: "../controller/controller.php?accion=insertOrder",
+        type: "post",
+        data: {date:date, idC:idC, idE:idE, idP:idP, idO:idO},
+        dataType: "JSON",
+        success: function(res){
+            if(res.insert){
+                alert(res.mensaje);
+                $("#date").val("");
+                $("#idC").val("");
+                $("#idE").val("");
+                $("#idP").val("");
+                $("#idO").val("");
+
+                $("#tablePO").load(" #tablePO");
+          
+            }else{
+                alert(res.mensaje);
+            }
+            // alert("Successful registration");
+           
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log(textStatus, errorThrown);
+        }
+    });
+}
+
+function delPO(idS){
+    $.ajax({
+        url: "../controller/controller.php?accion=delPO",
+        type: "post",
+        data: {idS:idS},
+        dataType: "JSON",
+        success: function(res){
+          if(res.eliminado){
+            alert(res.mensaje);
+            $("#tbodyDelPO").load(" #tbodyDelPO");
+          }else{
+            alert(res.mensaje);
+          }
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log(textStatus, errorThrown);
+        }
+    });
+}
+
+
