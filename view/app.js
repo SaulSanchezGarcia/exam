@@ -54,36 +54,7 @@ function insert(){
     let validacionEmail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
     let validacionPhone = /^((\d{10})|(\d{13}))$/;
     let validacionZip = /^((\d{3})|(\d{4}))$/;
-    
-    // if(name == "" || last_name == "" || email == "" || zip == "" || phone == "" ){
-    //     alert("Please fill all fields");
-    // }else{
-    //     // alert("Todo bien");
-    // }
-    
-    // if(expresion.test(name) && expresion.test(last_name)){
-    //     // alert("contine pura letra");
-    // }else{
-    //     alert("no contiene pura letra");
-    // }
-    
-    // if(validacionEmail.test(email)){
-    //     // alert("el email es correcto");
-    // }else{
-    //     alert("el email no es correcto");
-    // }
-    
-    // if(validacionZip.test(zip)){
-    //     // alert("el zip esta bien");
-    // }else{
-    //     alert("el zip esta mal");
-    // }
-
-    // if(validacionPhone.test(phone)){
-    //     // alert("el phone estan bien");
-    // }else{
-    //     alert("el phone no esta bien");
-    // }
+  
     if(name == "" || last_name == "" || email == "" || zip == "" || phone == ""){
         alert("Please fill all fields");
     }else{
@@ -131,14 +102,7 @@ function insert(){
         }else{
             alert("El nombre o apellido no esta bien");
         }
-    }
-    // if(name == "" || last_name == "" || email == "" || zip == "" || phone == ""){
-    //     alert("Please fill all fields");
-    // }else{
-      
-    // }  
- 
- 
+    } 
 }
 
 function del(idC){
@@ -162,23 +126,13 @@ function del(idC){
     });
 }
 
-function update(){
-   
+function pintarDatos(datos){
+   d = datos.split('||');
+   $("#idC").val(d[0]);
+   $("#name").val(d[1]);
+   $("#last_name").val(d[2]);
+   $("#email").val(d[3]);
+   $("#zip").val(d[4]);
+   $("#phone").val(d[5]);
 }
-// function buscar(){
 
-//     let search = $("#search").val();
-    
-//     $.ajax({
-//         url: "../controller/controller.php?accion=search",
-//         type: "post",
-//         data: {search:search},
-//         dataType: "JSON",
-//         success: function(res){
-          
-//         },
-//         error: function(jqXHR, textStatus, errorThrown){
-//             console.log(textStatus, errorThrown);
-//         }
-//     });
-// }

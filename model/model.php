@@ -64,23 +64,6 @@ class Model{
 
     }
 
-    // function search(){
-    //     $conn = new ConectarDB();
-    //     $connection = $conn->conectar();
-
-    //     $search = $_REQUEST["search"];
-
-    //     $query = "SELECT * FROM customers WHERE name LIKE '$search%'";
-    //     $result = mysqli_query($connection, $query);
-
-    //     while($row = mysqli_fetch_assoc($result)){
-    //         $arr[] = $row;
-            
-    //     }
-    //     print_r($arr);
-    //     mysqli_close($connection);
-    // }
-
     function delete(){
         $conn = new ConectarDB();
         $connection = $conn->conectar();
@@ -124,6 +107,27 @@ class Model{
         mysqli_close($connection);
     }
 
+    function pintarDatos(){
+        $conn = new ConectarDB();
+        $connection = $conn->conectar();
+
+        $idC = $_REQUEST['idC'];
+        $query = "SELECT name, last_name, email, zip, phone FROM customers WHERE idC = '$idC'";
+
+        $result = mysqli_query($connection, $query);
+
+        if($result){
+            while($row = mysqli_fetch_assoc($result)){
+                $arr[] = $row;
+            }
+            //  print_r($arr);
+             echo json_encode($arr);
+        }else{
+            echo "ERROR".$query."<br>".mysqli_error($connection);
+        }
+        mysqli_close($connection);
+    }
+
     function showInsert(){
         $conn = new ConectarDB();
         $connection = $conn->conectar();
@@ -132,7 +136,7 @@ class Model{
         $result = mysqli_query($connection, $query);
 
         if($result){
-            while($row = mysqli_fetch_assoc($result)){
+            while($row = mysqli_fetch_array($result)){
                 $arr[] = $row;
             }
             return $arr;
