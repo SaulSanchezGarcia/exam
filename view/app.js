@@ -126,6 +126,27 @@ function del(idC){
     });
 }
 
+function delProd(idP){
+    
+    $.ajax({
+        url: "../controller/controller.php?accion=deleteProd",
+        type: "post",
+        data: {idP:idP},
+        dataType: "JSON",
+        success: function(res){
+          if(res.eliminado){
+            alert(res.mensaje);
+            $("#tbodyDelP").load(" #tbodyDelP");
+          }else{
+            alert(res.mensaje);
+          }
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log(textStatus, errorThrown);
+        }
+    });
+}
+
 function pintarDatos(datos){
    d = datos.split('||');
    $("#idC").val(d[0]);
@@ -134,5 +155,113 @@ function pintarDatos(datos){
    $("#email").val(d[3]);
    $("#zip").val(d[4]);
    $("#phone").val(d[5]);
+}
+
+function act(){
+
+    let idC = $("#idC").val();
+    let name = $("#name").val();
+    let last_name = $("#last_name").val();
+    let email = $("#email").val();
+    let zip = $("#zip").val();
+    let phone = $("#phone").val();
+
+    $.ajax({
+        url: "../controller/controller.php?accion=update",
+        type: "post",
+        data: {idC:idC, name:name, last_name:last_name, email:email, zip:zip, phone:phone},
+        dataType: "JSON",
+        success: function(res){
+            
+            if(res.actualizado){
+                alert(res.mensaje);
+                location.reload("adminUpdate.php");
+            }else{
+                alert(res.mensaje);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log(textStatus, errorThrown);
+        }
+    });
+}
+
+function actProd(){
+    let idP = $("#idP").val();
+    let img = $("#img").val();
+    let name = $("#name").val();
+    let brand = $("#brand").val();
+    let model = $("#model").val();
+    let stock = $("#stock").val();
+    let price = $("#price").val();
+
+    $.ajax({
+        url: "../controller/controller.php?accion=updateProduct",
+        type: "post",
+        data: {idP:idP, img:img, name:name, brand:brand, model:model, stock:stock, price:price},
+        dataType: "JSON",
+        success: function(res){
+            
+            if(res.actualizado){
+                alert(res.mensaje);
+                location.reload("adminUpdateProduct.php");
+            }else{
+                alert(res.mensaje);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log(textStatus, errorThrown);
+        }
+    });
+}
+
+function pintarDatosProd(data){
+    dat = data.split('||');
+    $("#idP").val(dat[0]);
+    $("#img").val(dat[1]);
+    $("#name").val(dat[2]);
+    $("#brand").val(dat[3]);
+    $("#model").val(dat[4]);
+    $("#stock").val(dat[5]);
+    $("#price").val(dat[6]);
+}
+
+function insertProduct(){
+
+    let img = $("#img").val();
+    let name2 = $("#name2").val();
+    let brand = $("#brand").val();
+    let model = $("#model").val();
+    let stock = $("#stock").val();
+    let price = $("#price").val();
+  
+    
+    $.ajax({
+        url: "../controller/controller.php?accion=insertProduct",
+        type: "post",
+        data: {img:img, name:name2, brand:brand, model:model, stock:stock, price:price},
+        dataType: "JSON",
+        success: function(res){
+            if(res.insert){
+                alert(res.mensaje);
+                $("#img").val("");
+                $("#name2").val("");
+                $("#brand").val("");
+                $("#model").val("");
+                $("#stock").val("");
+                $("#price").val("");
+
+                $("#tbodyP").load(" #tbodyP");
+          
+            }else{
+                alert(res.mensaje);
+            }
+            // alert("Successful registration");
+           
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log(textStatus, errorThrown);
+        }
+    });
 }
 

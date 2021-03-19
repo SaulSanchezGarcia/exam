@@ -4,6 +4,7 @@ $conn = new Model();
 $show = $conn -> showProducts();
 $showInsert = $conn -> showInsert();
 $showUpdate = $conn -> showUpdate();
+$showInsertProduct = $conn -> showInsertProduct();
 
 
 $i = $_REQUEST["accion"];
@@ -32,6 +33,21 @@ switch ($i) {
     case 'pintar':
         $pintar = new Controller();
         $pintar -> pintar();
+    break;
+
+    case 'insertProduct':
+        $insertProduct = new Controller();
+        $insertProduct -> insertProduct();
+    break;
+
+    case 'deleteProd':
+        $deleteProd = new Controller();
+        $deleteProd -> deleteProd();
+    break;
+
+    case 'updateProduct':
+        $updateProduct = new Controller();
+        $updateProduct -> updateProduct();
     break;
 }
 
@@ -62,6 +78,21 @@ class Controller{
     function pintar(){
         $model = new Model();
         $model -> pintarDatos();
+    }
+
+    function insertProduct(){
+        $model = new Model();
+        $model -> insertProduct();
+    }
+
+    function deleteProd(){
+        $model = new Model();
+        $model -> deleteProd();
+    }
+
+    function updateProduct(){
+        $model = new Model();
+        $model -> updateProduct();
     }
 }
 ?>
