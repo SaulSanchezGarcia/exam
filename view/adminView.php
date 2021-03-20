@@ -84,6 +84,7 @@
           <table class="table" id ="tbody">
           <thead>
               <tr>
+                <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Last_name</th>
                 <th scope="col">Email</th>
@@ -135,6 +136,7 @@
           <table class="table" id ="tbodyDel">
           <thead>
               <tr>
+                <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Last_name</th>
                 <th scope="col">Email</th>
