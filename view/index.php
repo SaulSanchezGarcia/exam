@@ -51,19 +51,17 @@
                     "<td>".$index['brand']."</td>".
                     "<td>".$index['model']."</td>".
                     "<td>"."$".$index['price'].".00"."</td>".
-                    "<td><button class='btn btn-success' data-toggle='modal' data-target='#exampleModalLongCompra' style='width=80px' onclick='compra($index[price]);'>Add to Cart</button></td></td></tr>";
+                    "<td><button type='button' class='btn btn-success' id='boton' data-toggle='modal' data-target='#exampleModalLongCompra' onclick='venta($index[price]);'>Add to Cart</button></td></td></tr>";
                   }
                 ?>
             </tbody>
             </table>
 
 <!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Launch demo modal
-</button> -->
+<button type="button" onclick="venta();">Launch demo modal</button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalLongCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModalLongCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -80,5 +78,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <script src="app.js"></script>

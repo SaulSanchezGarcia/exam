@@ -320,4 +320,8 @@ function delPO(idS){
     });
 }
 
+function venta(res){
+    alert(`Great you buy a great sneakers anda it cost $ ${res}`);
+}
+
 
