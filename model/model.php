@@ -261,7 +261,11 @@ class Model{
         $conn = new ConectarDB();
         $connection = $conn->conectar();
 
-        $query = "SELECT * FROM sales"; 
+        $query = "SELECT sales.idS AS PO, customers.name AS Customer_Name, employees.name AS Employee_Name, 
+        products.brand AS Brand, products.model AS Model, products.price AS Price, sales.date AS Date FROM sales
+        INNER JOIN customers ON customers.idC = sales.CUSTOMERS_idC
+        INNER JOIN employees ON employees.idE = sales.EMPLOYEES_idE
+        INNER JOIN products ON products.idP = sales.PRODUCTS_idP"; 
         $result = mysqli_query($connection, $query);
 
         if($result){

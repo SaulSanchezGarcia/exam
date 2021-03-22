@@ -28,7 +28,7 @@
         <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalLongPOD">Delete PO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" >Update PO</a>
+        <a class="nav-link" href="../view/adminUpdatePO.php" >Update PO</a>
       </li>
     </ul>
   </div>
@@ -203,12 +203,13 @@
           <table class="table" id ="tablePO">
           <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col">PO</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+                <th scope="col">Price</th>
                 <th scope="col">Date</th>
-                <th scope="col">CUST ID</th>
-                <th scope="col">EMP ID</th>
-                <th scope="col">PROD ID</th>
-                <th scope="col">OUT ID</th>
               </tr>
             </thead>
             <tbody >
@@ -220,7 +221,8 @@
                       "<td>".$sO[2]."</td>".
                       "<td>".$sO[3]."</td>".
                       "<td>".$sO[4]."</td>".
-                      "<td>".$sO[5]."</td></td></tr>";
+                      "<td>".$sO[5]."</td>".
+                      "<td>".$sO[6]."</td></td></tr>";
                     }
                   ?>
             </tbody>
@@ -253,12 +255,13 @@
           <table class="table" id ="tbodyDelPO">
           <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col">PO</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+                <th scope="col">Price</th>
                 <th scope="col">Date</th>
-                <th scope="col">CUST ID</th>
-                <th scope="col">EMP ID</th>
-                <th scope="col">PROD ID</th>
-                <th scope="col">OUT ID</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -272,6 +275,7 @@
                     "<td>".$sO[3]."</td>".
                     "<td>".$sO[4]."</td>".
                     "<td>".$sO[5]."</td>".
+                    "<td>".$sO[6]."</td>".
                     "<td><button type='button' class='btn btn-danger' onclick='delPO($sO[0])'>Delete</button></td></td></tr>";
                   }
                 ?>
