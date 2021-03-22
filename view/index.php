@@ -76,7 +76,7 @@
       
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="act();">Update</button>
+        <button type="button" class="btn btn-primary" onclick="">Update</button>
       </div>
     </div>
   </div>
