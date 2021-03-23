@@ -356,10 +356,5 @@ function addItemToShoppingCart(itemImg, itemName, itemBrand, itemModel, itemPric
 }
 
 function updateCartTotal(){
-    // let total = 0;
-    // let elementos = document.querySelectorAll(".elementos");
-    // elementos.forEach(elemento => {
-    //     let price = elemento
-    //     console.log(price);
-    // })
+    
 }
