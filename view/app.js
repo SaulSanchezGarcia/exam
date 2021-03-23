@@ -335,19 +335,31 @@ function addToCartClick(evt){
     let itemModel = item.querySelector(".itemModel").textContent;
     let itemPrice = item.querySelector(".itemPrice").textContent;
 
-    console.log(itemImg, itemName, itemBrand, itemModel, itemPrice);
+    // console.log(itemImg, itemName, itemBrand, itemModel, itemPrice);
     addItemToShoppingCart(itemImg, itemName, itemBrand, itemModel, itemPrice);
 }
 
 function addItemToShoppingCart(itemImg, itemName, itemBrand, itemModel, itemPrice){
-    let containerRow = document.createElement("div");
     let tbody = document.querySelector(".tbody");
+    let containerRow = document.createElement("div");
     let addCartHTML = `<tr><td><img src='${itemImg}'></td>
                            <td>${itemName}</td>
                            <td>${itemBrand}</td>
                            <td>${itemModel}</td>
-                           <td>${itemPrice}</td></tr>`;
+                           <td>${itemPrice}</td>
+                           <button type='button' class='btn btn-danger'>X</button></tr>`;
 
     containerRow.innerHTML = addCartHTML;
     tbody.append(containerRow);
+
+    updateCartTotal();
+}
+
+function updateCartTotal(){
+    // let total = 0;
+    // let elementos = document.querySelectorAll(".elementos");
+    // elementos.forEach(elemento => {
+    //     let price = elemento
+    //     console.log(price);
+    // })
 }

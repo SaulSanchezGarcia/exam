@@ -68,4 +68,10 @@
              
             </tbody>
             </table>
+
+            <div class="cart-total">
+                <p>Total</p>
+                <p>$0</p>
+            </div>
+            
 <script src="app.js"></script>
