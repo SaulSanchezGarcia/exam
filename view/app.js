@@ -320,8 +320,34 @@ function delPO(idS){
     });
 }
 
-function venta(res){
-    alert(`Great you buy a great sneakers anda it cost $ ${res}`);
+let addToCartButtons = document.querySelectorAll(".addToCartButtons");
+
+addToCartButtons.forEach(addToCartButton => {
+    addToCartButton.addEventListener("click", addToCartClick);
+});
+
+function addToCartClick(evt){
+    let boton = evt.target;
+    let item = boton.closest(".item");
+    let itemImg = item.querySelector(".itemImg").src;
+    let itemName = item.querySelector(".itemName").textContent;
+    let itemBrand = item.querySelector(".itemBrand").textContent;
+    let itemModel = item.querySelector(".itemModel").textContent;
+    let itemPrice = item.querySelector(".itemPrice").textContent;
+
+    console.log(itemImg, itemName, itemBrand, itemModel, itemPrice);
+    addItemToShoppingCart(itemImg, itemName, itemBrand, itemModel, itemPrice);
 }
 
+function addItemToShoppingCart(itemImg, itemName, itemBrand, itemModel, itemPrice){
+    let containerRow = document.createElement("div");
+    let tbody = document.querySelector(".tbody");
+    let addCartHTML = `<tr><td><img src='${itemImg}'></td>
+                           <td>${itemName}</td>
+                           <td>${itemBrand}</td>
+                           <td>${itemModel}</td>
+                           <td>${itemPrice}</td></tr>`;
 
+    containerRow.innerHTML = addCartHTML;
+    tbody.append(containerRow);
+}

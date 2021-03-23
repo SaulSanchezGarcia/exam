@@ -34,7 +34,7 @@
 <table class="table" id ="tbody">
           <thead>
               <tr>
-                <th scope="col">Name</th>
+                <th scope="col">Img</th>
                 <th scope="col">Acronym</th>
                 <th scope="col">Brand</th>
                 <th scope="col">Model</th>
@@ -46,37 +46,26 @@
                 <?php
                   require_once("../controller/controller.php");
                   foreach($show as $index){
-                    echo "<tr><td><img src=".$index['img'].
-                    "><td>".$index['name']."</td>".
-                    "<td>".$index['brand']."</td>".
-                    "<td>".$index['model']."</td>".
-                    "<td>"."$".$index['price'].".00"."</td>".
-                    "<td><button type='button' class='btn btn-success' id='boton' data-toggle='modal' data-target='#exampleModalLongCompra' onclick='venta($index[price]);'>Add to Cart</button></td></td></tr>";
+                    echo "<tr class='item'><td><img class='itemImg' src=".$index['img'].
+                    "><td class='itemName'>".$index['name']."</td>".
+                    "<td class='itemBrand'>".$index['brand']."</td>".
+                    "<td class='itemModel'>".$index['model']."</td>".
+                    "<td class='itemPrice'>"."$".$index['price'].".00"."</td>".
+                    "<td><button type='button' class='btn btn-success addToCartButtons' >Add to Cart</button></td></td></tr>";
                   }
                 ?>
             </tbody>
             </table>
 
-<!-- Button trigger modal -->
-<button type="button" onclick="venta();">Launch demo modal</button>
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModalLongCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Sale</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="">Update</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+            <table class="table">
+          <thead>
+              <tr>
+                <th scope="col">CART</th>
+                
+              </tr>
+            </thead>
+            <tbody class="tbody">
+             
+            </tbody>
+            </table>
 <script src="app.js"></script>
