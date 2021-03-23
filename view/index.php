@@ -31,7 +31,7 @@
   </div>
 </nav>
 
-<table class="table" id ="tbody">
+<table class="table">
           <thead>
               <tr>
                 <th scope="col">Img</th>
@@ -60,18 +60,22 @@
             <table class="table">
           <thead>
               <tr>
-                <th scope="col">CART</th>
-                
+                <th scope="col">Img</th>
+                <th scope="col">Acronym</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+                <th scope="col">Price</th>
+                <th scope="col"></th>
               </tr>
-            </thead>
+          </thead>
             <tbody class="tbody">
              
             </tbody>
             </table>
 
-            <div class="cart-total">
+            <div>
                 <p>Total</p>
-                <p>$0</p>
+                <p class="cart-total">$0</p>
             </div>
             
 <script src="app.js"></script>

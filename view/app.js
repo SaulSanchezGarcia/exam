@@ -342,12 +342,12 @@ function addToCartClick(evt){
 function addItemToShoppingCart(itemImg, itemName, itemBrand, itemModel, itemPrice){
     let tbody = document.querySelector(".tbody");
     let containerRow = document.createElement("div");
-    let addCartHTML = `<tr><td><img src='${itemImg}'></td>
-                           <td>${itemName}</td>
-                           <td>${itemBrand}</td>
-                           <td>${itemModel}</td>
-                           <td>${itemPrice}</td>
-                           <button type='button' class='btn btn-danger'>X</button></tr>`;
+    let addCartHTML = `<tr><td><img src="${itemImg}"></td>
+                           <td><p class='name'>${itemName}</p></td>
+                           <td><p>${itemBrand}</p></td>
+                           <td><p class='model'>${itemModel}</p></td>
+                           <td><p class='price'>${itemPrice}</p></td>
+                           <td><button type="button" class="btn btn-danger">X</button></td></tr>`;
 
     containerRow.innerHTML = addCartHTML;
     tbody.append(containerRow);
@@ -356,5 +356,13 @@ function addItemToShoppingCart(itemImg, itemName, itemBrand, itemModel, itemPric
 }
 
 function updateCartTotal(){
-    
+    let total = 0;
+    let cartTotal = document.querySelector(".cart-total");
+    console.log(cartTotal);
+    let tbody = document.querySelectorAll(".tbody");
+
+    tbody.forEach(tb =>{
+        let price = tb.querySelector(".model").textContent;
+        console.log(price);
+    })
 }
